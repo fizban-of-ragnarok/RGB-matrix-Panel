@@ -36,7 +36,14 @@ typedef uint32_t PortType; // Formerly 'RwReg' but interfered w/CMCIS header
 /*!
     @brief  Class encapsulating RGB LED matrix functionality.
 */
+
 class RGBmatrixPanel : public Adafruit_GFX {
+
+// Constructors
+// u8 u8 u8 u8 u8 u8 bool [u8*]			16x32 		(original)
+// u8 u8 u8 u8 u8 u8 bool u8=32 [u8*]		16x32 / 16x64	(new)
+// u8 u8 u8 u8 u8 u8 u8 bool u8=32 [u8*]	32x32 / 32x64	
+//
 
 public:
   /*!
@@ -53,7 +60,7 @@ public:
                      to upper R, G, B and lower R, G, B pins.
   */
   RGBmatrixPanel(uint8_t a, uint8_t b, uint8_t c, uint8_t clk, uint8_t lat,
-                 uint8_t oe, boolean dbuf
+                 uint8_t oe, boolean dbuf, uint8_t width = 32
 #if defined(ARDUINO_ARCH_SAMD) || defined(ARDUINO_ARCH_ESP32)
                  ,
                  uint8_t *pinlist = NULL
